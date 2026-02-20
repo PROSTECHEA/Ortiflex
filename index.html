@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ortiflex OSCM - Sistema de Gestión de Suministros</title>
+    <!-- CSS Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #004a99;
+            --secondary-blue: #002d5a;
+            --accent: #00d2ff;
+            --light-bg: #f5f7fb;
+            --sidebar-width: 260px;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--light-bg);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Login Page Styling */
+        #login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+        }
+
+        .login-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* Main Layout Styling */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            background-color: var(--secondary-blue);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .sidebar a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            padding: 15px 25px;
+            display: block;
+            transition: all 0.2s;
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--accent);
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 30px;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+
+        /* Components */
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-blue);
+        }
+
+        .table-responsive {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .low-stock {
+            color: #dc3545;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 992px) {
+            .sidebar {
+                left: -100%;
+            }
+
+            .sidebar.show {
+                left: 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- App Container -->
+    <div id="app">
+        <!-- Login View (Default) -->
+        <div id="login-view">
+            <div id="login-container">
+                <div class="login-card">
+                    <div class="text-center mb-4">
+                        <i class="bi bi-box-seam text-primary display-4"></i>
+                        <h2 class="fw-bold mt-2">Ortiflex OSCM</h2>
+                        <p class="text-muted">Acceso al Sistema</p>
+                    </div>
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label class="form-label">Usuario</label>
+                            <input type="text" class="form-control" id="username" required
+                                placeholder="admin / operador">
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" required
+                                placeholder="admin123 / op123">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">Entrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard View (Hidden initially) -->
+        <div id="main-view" style="display: none;">
+            <div class="sidebar" id="sidebar">
+                <div class="p-4 mb-4 text-center">
+                    <h4 class="fw-bold mb-0">OSCM</h4>
+                    <small class="text-accent opacity-75">Control de Suministros</small>
+                    <hr class="text-white-50">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <div class="bg-light text-primary rounded-circle fw-bold d-flex align-items-center justify-content-center me-2"
+                            style="width: 40px; height: 40px;" id="user-initial">A</div>
+                        <div class="text-start">
+                            <div class="small fw-bold" id="sidebar-username">Usuario</div>
+                            <div class="extra-small text-white-50" id="sidebar-role" style="font-size: 0.7rem;">ADMIN
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <nav id="nav-links">
+                    <a href="javascript:void(0)" onclick="app.navigate('dashboard')" data-nav="dashboard">
+                        <i class="bi bi-grid-1x2 me-2"></i> Dashboard
+                    </a>
+                    <a href="javascript:void(0)" onclick="app.navigate('inventory')" data-nav="inventory">
+                        <i class="bi bi-box-seam me-2"></i> Inventario
+                    </a>
+                    <a href="javascript:void(0)" onclick="app.navigate('trash')" data-nav="trash">
+                        <i class="bi bi-trash3 me-2"></i> Papelera
+                    </a>
+                    <a href="javascript:void(0)" onclick="app.navigate('projects')" data-nav="projects">
+                        <i class="bi bi-kanban me-2"></i> Proyectos
+                    </a>
+                    <a href="javascript:void(0)" onclick="app.navigate('reports')" data-nav="reports">
+                        <i class="bi bi-file-earmark-bar-graph me-2"></i> Reportes
+                    </a>
+                    <a href="javascript:void(0)" onclick="app.navigate('users')" data-nav="users" id="nav-users"
+                        style="display:none;">
+                        <i class="bi bi-people me-2"></i> Personal
+                    </a>
+                </nav>
+
+                <div class="mt-auto mb-4">
+                    <hr class="mx-3 text-white-50">
+                    <a href="javascript:void(0)" onclick="app.logout()" class="text-white-50">
+                        <i class="bi bi-power me-2 text-danger"></i> Cerrar Sesión
+                    </a>
+                </div>
+            </div>
+
+            <main class="main-content">
+                <!-- Mobile Header -->
+                <div
+                    class="d-lg-none mb-4 d-flex align-items-center justify-content-between bg-white p-3 rounded shadow-sm">
+                    <h5 class="mb-0 fw-bold">Ortiflex OSCM</h5>
+                    <button class="btn btn-outline-primary"
+                        onclick="document.getElementById('sidebar').classList.toggle('show')">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" onclick="app.navigate('dashboard')">Sistema</a></li>
+                        <li class="breadcrumb-item active" id="current-breadcrumb">Dashboard</li>
+                    </ol>
+                </nav>
+
+                <!-- Dynamic View Area -->
+                <div id="view-container"></div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modals Placeholder -->
+    <div id="modal-container"></div>
+
+    <!-- Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+    <!-- Application Logic -->
+    <script src="app.js"></script>
+</body>
+
+</html>
