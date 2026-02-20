@@ -1,0 +1,3420 @@
+
+--- START OF FILE: Definición y Delimitación del Sistema de Negocios.pdf ---
+ 
+ 
+MINISTERIO  DEL  PODER  POPULAR  PARA  LA  EDUCACIÓN  UNIVERSITARIA  UNIVERSIDAD  NACIONAL  EXPERIMENTAL  DE  LAS  TELECOMUNICACIONES  E  
+INFORMÁTICA
+ PROGRAMA  NACIONAL  DE  FORMACIÓN  EN  INFORMÁTICA  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Diseñar  e  implementar  un  sistema  digital  que  permita  
+planificar,
+ 
+ejecutar
+ 
+y
+ 
+monitorear
+ 
+la
+ 
+cadena
+ 
+de
+ 
+suministro
+ 
+de
+ 
+Ortiflex
+ 
+C.A.
+ 
+ 
+ 
+ 
+ 
+  Tutor  Académico:  Nombre  y  Apellido  del  integrante,  CI:  
+Ing.  Ana  Ejzenbaun  
+ Br.  Lexter  Freile  C.I:34065270   Br.  Carlos  Zamora   C.I:14704028    
+ 
+
+Índice
+ 
+Índice. ....................................................................................................................................... 2  Fase  II:MODELADO  DEL  DOMINIO  DE  LA  APLICACIÓN.  1.  Definición  y  Delimitación  del  Sistema  de  Negocios .......................................... 3  Nombre  del  sistema  de  negocios ..................................................................... 3  Breve  descripción  del  sistema .......................................................................... 3  Alcance  del  dominio  (límites  funcionales  y  organizacionales) .......................... 3  Justificación  de  por  qué  se  eligió  ese  dominio ................................................. 3  
+      2.  Objetivos  del  Sistema  de  Negocios
+ 
+Objetivo  general  del  sistema  de  negocios ........................................................ 4  Objetivos  específicos ........................................................................................ 4  Diagrama  jerárquico  de  objetivos  del  sistema  de  negocios ............................. 4  
+      3.Procesos  del  Sistema  de  Negocios  
+Lista  de  procesos  identificados  en  el  sistema .................................................. 5  Procesos  que  serán  apoyados  directamente  por  la  aplicación ........................ 5  Diagrama  de  procesos  del  sistema  de  negocios  en  UML ................................ 6  
+      4.  Actores  y  Estructura  Organizacional  
+Actores  involucrados  en  el  sistema  de  negocios .............................................. 7  Organigrama  estructural  del  sistema  de  negocios ........................................... 7  
+      5.  Objetos  de  Negocio  
+Lista  de  objetos  de  negocio  por  proceso .......................................................... 8  Diagrama  de  clases  UML  que  representa  los  objetos  de  negocio ................... 8   
+        6.  Relación  entre  Objetivos  y  Procesos  de  Negocio……………………………….9  
+        7.  Relación  entre  Procesos  y  Actores………………………………………………10  
+        8.  Relación  entre  Procesos  y  Objetos  de  Negocio…………………………..……10  
+        9.  Anexos………………………………………………………………………….11-12  
+ 
+ 
+ 
+ 
+2  
+1.  Definición  y  Delimitación  del  Sistema  de  Negocios  
+Nombre  del  sistema  de  negocios:  
+ 
+ 
+Gestión
+ 
+de
+ 
+la
+ 
+Cadena
+ 
+de
+ 
+Suministro
+ 
+de
+ 
+Ortiflex
+ 
+C.A
+ 
+(OSCM)
+ 
+ 
+Breve  descripción  del  sistema:  
+ 
+ 
+ 
+El
+ 
+sistema
+ 
+permitirá
+ 
+coordinar
+ 
+los
+ 
+procesos
+ 
+de
+ 
+abastecimiento,
+ 
+elaboración
+ 
+y
+ 
+distribución
+ 
+dentro
+ 
+de
+ 
+la
+ 
+empresa
+ 
+mediante
+ 
+un
+ 
+sistema
+ 
+digital
+ 
+que
+ 
+automatiza
+ 
+los
+ 
+procesos
+ 
+más
+ 
+importantes
+ 
+dentro
+ 
+de
+ 
+la
+ 
+cadena
+ 
+de
+ 
+suministro.
+ 
+ 
+Alcance  del  dominio  (límites  funcionales  y  organizacionales):  
+●  Funcionales:   1.  Planificación  del  abastecimiento  a.  Gestión  de  proveedores  b.  Envío  de  notificaciones  de  existencias  de  material  2.  Producción  y  distribución  a.  Control  de  entradas  y  salidas  del  material  b.  Planificación  y  gestión  de  proyectos  3.  Gestión  de  inventarios  a.  Añadir,  modificar,  eliminar  y  visualizar  el  material  en  existencia  
+ 
+●  Organizacionales:  
+Está  dirigido  al  nivel  táctico  de  la  organización.  Abarca  las  áreas  de  
+Producción
+ 
+(planificación
+ 
+y
+ 
+logística)
+ 
+y
+ 
+Administración
+ 
+(departamento
+ 
+de
+ 
+compras
+ 
+y
+ 
+gestión
+ 
+de
+ 
+inventario)
+ 
+de
+ 
+Ortiflex
+ 
+C.A.
+ 
+ 
+ 
+Justificación  de  por  qué  se  eligió  ese  dominio:  
+ 
+ 
+El
+ 
+control
+ 
+de
+ 
+inventario
+ 
+manual
+ 
+ha
+ 
+generado
+ 
+errores,
+ 
+pérdidas
+ 
+de
+ 
+registros
+ 
+físicos
+ 
+y
+ 
+fallos
+ 
+en
+ 
+la
+ 
+logística,
+ 
+impactando
+ 
+costos
+ 
+y
+ 
+eficiencia.
+ 
+Digitalizar
+ 
+este
+ 
+dominio
+ 
+mejora
+ 
+la
+ 
+toma
+ 
+de
+ 
+decisiones
+ 
+estratégicas
+ 
+y
+ 
+promueve
+ 
+el
+ 
+crecimiento
+ 
+empresarial.
+ 
+3  
+2.  Objetivos  del  Sistema  de  Negocios  
+ 
+Objetivo  general  del  sistema  de  negocios:  
+ 
+ 
+Diseñar
+ 
+e
+ 
+implementar
+ 
+un
+ 
+sistema
+ 
+digital
+ 
+que
+ 
+permita
+ 
+planificar,
+ 
+ejecutar
+ 
+y
+ 
+monitorear
+ 
+la
+ 
+cadena
+ 
+de
+ 
+suministro
+ 
+de
+ 
+Ortiflex
+ 
+C.A.
+ 
+Objetivos  específicos:  
+●  Garantizar  la  entrega  puntual  de  los  productos  por  medio  de  la  planificación  
+digital
+ 
+de
+ 
+los
+ 
+proyectos
+ 
+a
+ 
+ejecutar
+ 
+y
+ 
+su
+ 
+monitoreo
+ 
+en
+ 
+tiempo
+ 
+real.
+ 
+ ●  Mejorar  la  coordinación  de  los  diferentes  proyectos  de  producción  dentro  del  
+sistema
+ 
+SCM.
+ 
+ ●  Optimizar  la  gestión  del  inventario  manteniendo  cantidades  de  material  
+adecuadas
+ 
+a
+ 
+la
+ 
+demanda.
+ 
+ ●  Mejorar  la  visibilidad  de  los  procesos  dentro  de  la  cadena  de  suministro  
+mediante
+ 
+herramientas
+ 
+que
+ 
+permitan
+ 
+monitorear
+ 
+y
+ 
+manejar
+ 
+el
+ 
+flujo
+ 
+de
+ 
+trabajo.
+ 
+ ●  Proporcionar  un  sistema  de  registro  cronológico  que  documente  los  eventos  
+clave
+ 
+dentro
+ 
+de
+ 
+la
+ 
+cadena
+ 
+de
+ 
+suministro.
+ 
+ 
+Diagrama  jerárquico  de  objetivos  del  sistema  de  negocios:  
+ 
+4  
+
+3.  Procesos  del  Sistema  de  Negocios  
+ 
+Lista  de  procesos  identificados  en  el  sistema:  
+●  Gestionar  proyecto.  ●  Gestionar  inventario.  ●  Generar  reportes.  ●  Gestionar  usuarios  y  roles.  
+Procesos  que  serán  apoyados  directamente  por  la  aplicación:  
+Procesos  de  Negocio:  
+●  Gestionar  proyectos  ○  Planificar  proyecto  ○  Modificar  proyecto  ○  Ejecutar  proyecto  ○  Cancelar  proyecto  ○  Monitorear  detalles  del  proyecto  
+ ●  Gestionar  inventario  ○  Agregar  material  ○  Eliminar  material  ○  Actualizar  detalles  del  material  ○  Consulta  de  inventario  ■  Visualizar  detalles  del  material  
+ ●  Generación  de  reportes  de  eventos  de  proyecto  ○  Visualizar  reportes  de  eventos  de  proyecto  ○  Exportar  reportes  en  formato  PDF  
+Procesos  de  soporte  a  los  usuarios  del  sistema:  
+●  Gestionar  Usuarios  ○  Crear  nuevos  usuarios  ○  Eliminar  usuarios  ○  Recuperar  claves  de  acceso  de  usuarios  
+ 
+5  
+Procesos  de  Acceso  al  sistema:  
+●  Ingresar  al  Sistema  ○  Login  de  usuario  ○  Autentificación  de  usuario  ○  Registro  de  usuario  
+ 
+Diagrama
+ 
+de
+ 
+procesos
+ 
+del
+ 
+sistema
+ 
+de
+ 
+negocios
+ 
+en
+ 
+UML:
+ 
+ 
+ 
+ 
+Véase  la  sección  de  anexos  para  encontrar  los  diagramas  detallados  
+ 
+6  
+
+4.  Actores  y  Estructura  Organizacional  
+ 
+Actores  involucrados  en  el  sistema  de  negocios:  
+Nombre  Rol  o  función  Unidad/Área  
+Usuarios  Operan  la  aplicación  y  sus  funcionalidades  
+Departamento  de  administración:  se  encarga  de  la  planificación  de  proyecto  y  la  gestión  de  los  recursos  
+Operarios  de  Producción  
+Equipo  externo  que  no  tiene  interacción  directa  con  el  sistema,  solo  reciben  información  cuando  del  caso  de  uso  “Ejecutar  Proyecto”  
+Departamento  de  Producción  
+Soporte  Gestionan  la  administración  de  los  usuarios  del  sistema  abarcando  tanto  la  modificación  y  eliminación  de  usuarios  como  la  creación  de  nuevos  usuarios  del  tipo  soporte.  
+Departamento  de  informática:  se  encarga  de  dar  soporte  a  los  usuarios  mediante  funcionalidades  exclusivas  de  su  rol  
+ 
+Organigrama  estructural  del  sistema  de  negocios:  
+ 
+7  
+
+5.  Objetos  de  Negocio  
+Lista  de  objetos  de  negocio  por  proceso:  
+Objeto  Proceso  relacionado  
+Función  dentro  del  proceso  
+Proyecto  Gestionar  Proyecto  Representa  la  planificación  y  control  de  actividades  para  ejecución  de  tareas  
+Reporte  de  Evento  de  Proyecto  
+Generar  Reporte  Es  un  objeto  que  representa  eventos  y  acciones  realizadas  dentro  de  los  proyectos  
+Inventario  Gestionar  Inventario  Lista  detallada  y  organizada  de  los  materiales  que  Ortiflex  posee  en  el  momento  de  su  consulta.  
+Material  Gestionar  Inventario  Son  las  entidades  que  representan  cada  material  existente  dentro  del  inventario  
+Proveedor  Gestionar  Inventario  provee  o  suministra  profesionalmente  de  un  determinado  “material”  necesario  para  un  “proyecto”  
+Diagrama  de  clases  UML  que  representa  los  objetos  de  negocio:  
+  
+8  
+
+6.  Relación  entre  Objetivos  y  Procesos  de  Negocio  
+ 
+Proceso  de  Negocio  
+Objetivo  Asociado  
+Gestionar  Proyectos  ●  Garantizar  la  entrega  puntual  de  los  productos  por  medio  de  la  planificación  digital  de  los  proyectos  a  ejecutar  y  su  monitoreo  en  tiempo  real.  
+Gestionar  Inventario  ●  Optimizar  la  gestión  del  inventario  manteniendo  cantidades  de  material  adecuadas  a  la  demanda.  
+Generar  Reportes  ●  Proporcionar  un  sistema  de  registro  cronológico  que  documente  los  eventos  clave  dentro  de  la  cadena  de  suministro.  
+Gestionar  Usuarios  y  Roles  
+●  Mejorar  la  coordinación  de  los  diferentes  proyectos  de  producción  dentro  del  sistema  SCM.  
+●  Mejorar  la  visibilidad  de  los  procesos  dentro  de  la  cadena  de  suministro  mediante  herramientas  que  permitan  monitorear  y  manejar  el  flujo  de  trabajo.  
+ 
+ 
+ 
+ 
+9  
+7.  Relación  entre  Procesos  y  Actores  
+Actor  Responsable  Proceso  de  Negocio  
+Usuario   
+Gestionar  Proyectos  
+Login  Usuario  
+Gestionar  Inventario  
+Soporte  
+Gestionar  Usuarios  y  Roles  
+Operarios  de  Producción  
+Gestionar  Proyecto:  ●  Ejecutar  Proyecto  
+  
+8.  Relación  entre  Procesos  y  Objetos  de  Negocio  
+Proceso  de  Negocio  
+Objeto  de  Negocio  Relacionado  
+ Gestionar  Proyectos  
+●  Proyecto  
+ Gestionar  Inventario  
+●  Inventario  ●  Material  ●  Proveedor  
+ Generar  Reportes  
+●  Reporte  de  Evento  de  Proyecto  
+ Gestionar  Usuarios  y  Roles   
+●  Usuario  
+  
+10  
+Anexos   Casos  de  uso  detallados:   
+ 
+Caso
+ 
+de
+ 
+uso:
+ 
+Gestionar
+ 
+Proyecto
+   
+ Caso  de  uso:  Gestionar  Inventario  
+ 
+11  
+
+ Caso  de  Uso:  Acceso   
+12  
+
+--- END OF FILE: Definición y Delimitación del Sistema de Negocios.pdf ---
+
+--- START OF FILE: DISEÑO DE LA APLICACIÓN WEB.pdf ---
+ 
+ 
+MINISTERIO  DEL  PODER  POPULAR  PARA  LA  EDUCACIÓN  UNIVERSITARIA  UNIVERSIDAD  NACIONAL  EXPERIMENTAL  DE  LAS  TELECOMUNICACIONES  E  
+INFORMÁTICA
+ PROGRAMA  NACIONAL  DE  FORMACIÓN  EN  INFORMÁTICA  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Diseñar  e  implementar  un  sistema  digital  que  permita  
+planificar,
+ 
+ejecutar
+ 
+y
+ 
+monitorear
+ 
+la
+ 
+cadena
+ 
+de
+ 
+suministro
+ 
+de
+ 
+Ortiflex
+ 
+C.A.
+ 
+ 
+ 
+ 
+ 
+  Tutor  Académico:  Nombre  y  Apellido  del  integrante,  CI:  
+Ing.  Ana  Ejzenbaun  
+ Br.  Lexter  Freile  C.I:34065270   Br.  Carlos  Zamora   C.I:14704028    
+ 
+
+ÍNDICE  
+Índice. ....................................................................................................................................... 2  1.  Introducción  1.1  Descripción  general  del  diseño .......................................................................................... 3  DISEÑO  DE  LA  APLICACIÓN  WEB  
+2.  Arquitectura  de  la  Aplicación  
+Componentes  principales .............................................................................. 4  Lógica  de  negocio .......................................................................................... 4  Diagrama  arquitectónico  simplificado ......................................................... 4  
+3.  Diseño  de  la  Interfaz  de  Usuario  
+3.1  Navegación ............................................................................................... 5  3.2  Disposición  de  elementos ....................................................................... 5  3.3  Estilo  visual ............................................................................................... 5  Wireframe ........................................................................................................ 5  
+4.  Diseño  de  la  Base  de  Datos  ………………………………………………………………6  
+5.  Diseño  de  la  Seguridad  ………….……………………………………………………………6  
+6.  Diseño  de  la  Escalabilidad  ………………………………………………………………7  
+7.  Anexo  …………………………………………………………….………………………8-13  
+                     
+2  
+1.  Introducción  
+1.1  Descripción  general  del  diseño  
+Este  diseño  está  orientado  a  digitalizar  y  optimizar  la  gestión  de  materiales  dentro  de  la  
+cadena
+ 
+de
+ 
+suministro
+ 
+de
+ 
+la
+ 
+empresa.
+ 
+Está
+ 
+dirigido
+ 
+al
+ 
+personal
+ 
+de
+ 
+los
+ 
+departamentos
+ 
+de
+ 
+Administración
+ 
+y
+ 
+Producción,
+ 
+quienes
+ 
+interactúaran
+ 
+con
+ 
+una
+ 
+interfaz
+ 
+web
+ 
+intuitiva,
+ 
+accesible
+ 
+y
+ 
+responsiva.
+ 
+La
+ 
+aplicación
+ 
+seguirá
+ 
+una
+ 
+arquitectura
+ 
+cliente-servidor,
+ 
+implementando
+ 
+una
+ 
+estructura
+ 
+MVC
+ 
+(Modelo-Vista-Controlador),
+ 
+y
+ 
+se
+ 
+respaldará
+ 
+con
+ 
+una
+ 
+base
+ 
+de
+ 
+datos
+ 
+relacional
+ 
+MySQL
+ 
+para
+ 
+garantizar
+ 
+la
+ 
+integridad
+ 
+y
+ 
+disponibilidad
+ 
+de
+ 
+la
+ 
+información.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+3  
+2.  Arquitectura  de  la  Aplicación  
+Se  utilizará  una  arquitectura  en  tres  capas  (MVC):  
+●  Frontend :  HTML5,  CSS3  y  Bootstrap  para  un  diseño  responsivo  e  intuitivo.  
+ ●  Backend :  Python  con  el  framework  Flask,  encargado  de  la  lógica  de  negocio,  
+manejo
+ 
+de
+ 
+peticiones
+ 
+y
+ 
+validaciones.
+ 
+ ●  Base  de  datos :  MySQL,  sistema  relacional  que  permite  manejar  inventario,  
+usuarios,
+ 
+materiales
+ 
+y
+ 
+registros
+ 
+históricos.
+ 
+ 
+Componentes  principales:  
+●  Cliente  web  (navegador)  
+ ●  Servidor  de  aplicación  (API  REST  Flask)  
+ ●  Servidor  de  base  de  datos  (MySQL)  
+ 
+Lógica  de  negocio:  
+●  Validaciones  de  datos  
+ ●  Operaciones  CRUD  (crear,  leer,  actualizar,  eliminar)  
+ ●  Generación  de  reportes  
+ ●  Respaldo  de  información  
+ 
+ 
+Diagrama  arquitectónico  simplificado  
+ 
+ 
+ 
+4  
+
+3.  Diseño  de  la  Interfaz  de  Usuario  
+La  aplicación  estará  diseñada  para  facilitar  el  uso  por  parte  de  personal  administrativo  y  de  
+producción
+ 
+con
+ 
+conocimientos
+ 
+básicos
+ 
+en
+ 
+herramientas
+ 
+digitales.
+ 
+3.1  Navegación  
+●  Menú  superior  con  opciones:  Inicio  |  Inventario  |  Proyectos  |  Reportes  |  Usuarios  |  
+Cerrar
+ 
+sesión
+ 
+ 
+3.2  Disposición  de  elementos  
+●  Pantalla  de  inicio:  resumen  de  inventario,  alertas  de  stock  bajo  y  proyectos  activos.  
+ ●  Páginas  CRUD:  formularios  amigables  y  tablas  de  datos  con  filtros.  
+ ●  Reportes:  exportables  en  PDF,  ordenados  por  fecha  y  proyecto.  
+ 
+3.3  Estilo  visual  
+●  Paleta  de  colores:  blanco,  gris  claro  y  azul  institucional.  
+ ●  Tipografía:  Roboto  o  Open  Sans  para  buena  legibilidad.  
+ ●  Framework:  Bootstrap  para  garantizar  compatibilidad  responsiva.  
+ 
+ 
+Wireframe  por  favor  ver  Anexos  
+ 
+ 
+ 
+ 
+ 
+5  
+4.  Diseño  de  la  Base  de  Datos  
+La  base  de  datos  estará  normalizada  y  compuesta  por  las  siguientes  tablas  clave:  
+Tabla  Descripción  
+usuarios  Registra  a  los  usuarios  del  sistema  y  sus  roles  
+materiales  Contiene  los  productos  o  insumos  en  inventario  
+inventario  Registro  de  entradas  y  salidas  de  materiales  
+proyectos  Almacena  información  de  los  proyectos  planificados  
+reportes  Almacena  reportes  de  eventos  y  movimientos  
+proveedores  Datos  de  los  proveedores  asociados  a  cada  material  
+Modelo  entidad  relación  
+ 
+5.  Diseño  de  la  Seguridad  
+El  sistema  implementará  múltiples  estrategias  para  garantizar  la  seguridad  de  los  datos:  
+●  Autenticación  basada  en  tokens  de  sesión  (Flask-Login  o  JWT)  
+ 
+6  
+
+●  Hash  de  contraseñas  con  bcrypt  para  evitar  filtraciones  
+ ●  Validaciones  en  frontend  (JS)  y  backend  (Python)  para  prevenir  entradas  maliciosas  
+ ●  Prevención  de  ataques  XSS  y  CSRF  con  Flask-WTF  
+ ●  Control  de  accesos  basado  en  roles  (admin,  soporte,  usuario)  
+ 
+6.  Diseño  de  la  Escalabilidad  
+Para  garantizar  que  el  sistema  pueda  crecer  con  el  tiempo  y  adaptarse  a  una  mayor  carga  o  
+nuevas
+ 
+funcionalidades:
+ 
+●  Base  de  datos  MySQL  normalizada,  con  índices  en  campos  clave  
+ ●  Backend  modularizado  con  blueprints  de  Flask  
+ ●  Posible  integración  futura  con  servicios  REST  externos  
+ ●  Despliegue  mediante  servidores  Apache/Nginx  con  WSGI  
+ ●  Opcional:  contenedorización  con  Docker  para  ambientes  de  desarrollo  y  producción  
+ ●  Respaldo  automático  de  la  base  de  datos  mediante  scripts  programados  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+7  
+ANEXOS  
+ 
+Wireframe  
+Inicio  de  sesión:  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+INICIO:  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+8  
+
+VISUALIZAR  REPORTE:  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+GESTIONAR  PROYECTO:  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+9  
+
+PLANIFICAR  PROYECTO:  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+MODIFICAR  PROYECTO:  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+10  
+
+CANCELAR  PROYECTO:  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+CONSULTAR  INVENTARIO:  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+11  
+
+AGREGAR  MATERIAL:  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+MODIFICAR  MATERIAL:  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+12  
+
+ELIMINAR  MATERIAL:  
+ 
+ 
+ 
+13  
+
+--- END OF FILE: DISEÑO DE LA APLICACIÓN WEB.pdf ---
+
+--- START OF FILE: Requisitos de la Aplicación.pdf ---
+ 
+ 
+MINISTERIO  DEL  PODER  POPULAR  PARA  LA  EDUCACIÓN  UNIVERSITARIA  UNIVERSIDAD  NACIONAL  EXPERIMENTAL  DE  LAS  TELECOMUNICACIONES  E  
+INFORMÁTICA
+ PROGRAMA  NACIONAL  DE  FORMACIÓN  EN  INFORMÁTICA  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Diseñar  e  implementar  un  sistema  digital  que  permita  
+planificar,
+ 
+ejecutar
+ 
+y
+ 
+monitorear
+ 
+la
+ 
+cadena
+ 
+de
+ 
+suministro
+ 
+de
+ 
+Ortiflex
+ 
+C.A.
+ 
+ 
+ 
+ 
+ 
+  Tutor  Académico:  Nombre  y  Apellido  del  integrante,  CI:  
+Ing.  Ana  Ejzenbaun  
+ Br.  Lexter  Freile  C.I:34065270   Br.  Carlos  Zamora   C.I:14704028    
+
+Requisitos  de  la  Aplicación   Nombre  del  Sistema:   Ortiflex  Supply  Chain  Manager  (OSCM)   Versión:  1.0   Fecha:  junio  de  2025   Autores:   Lexter  Freile  C.I  34065270.    Carlos  Zamora  C.I:14704028     
+1  Introducción  
+El  presente  documento  tiene  como  finalidad  establecer  y  describir  de  manera  
+clara
+ 
+y
+ 
+estructurada
+ 
+los
+ 
+requisitos
+ 
+funcionales
+ 
+y
+ 
+no
+ 
+funcionales
+ 
+necesarios
+ 
+para
+ 
+el
+ 
+desarrollo
+ 
+del
+ 
+sistema
+ 
+digital
+ 
+de
+ 
+Gestión
+ 
+de
+ 
+la
+ 
+Cadena
+ 
+de
+ 
+Suministro
+ 
+de
+ 
+Ortiflex
+ 
+C.A.
+ 
+(OSCM).
+ 
+Este
+ 
+sistema
+ 
+está
+ 
+orientado
+ 
+a
+ 
+optimizar
+ 
+los
+ 
+procesos
+ 
+de
+ 
+planificación,
+ 
+ejecución
+ 
+y
+ 
+monitoreo
+ 
+de
+ 
+las
+ 
+actividades
+ 
+relacionadas
+ 
+con
+ 
+el
+ 
+abastecimiento,
+ 
+la
+ 
+producción,
+ 
+la
+ 
+distribución
+ 
+y
+ 
+la
+ 
+gestión
+ 
+de
+ 
+inventario
+ 
+dentro
+ 
+de
+ 
+la
+ 
+organización.
+ 
+ 
+1.1  Descripción  general  del  proyecto  
+La  aplicación  web  OSCM  proporcionará  una  plataforma  digital  centralizada  
+que
+ 
+permita
+ 
+gestionar
+ 
+de
+ 
+forma
+ 
+eficiente
+ 
+el
+ 
+abastecimiento,
+ 
+la
+ 
+producción,
+ 
+la
+ 
+distribución
+ 
+y
+ 
+el
+ 
+inventario,
+ 
+mejorando
+ 
+así
+ 
+la
+ 
+trazabilidad,
+ 
+la
+ 
+coordinación
+ 
+interna
+ 
+y
+ 
+la
+ 
+productividad
+ 
+general
+ 
+de
+ 
+Ortiflex
+ 
+C.A.
+ 
+    1.2  Propósito    La  aplicación  web  OSCM  tiene  como  propósito  central  digitalizar  y  
+automatizar
+ 
+los
+ 
+procesos
+ 
+clave
+ 
+de
+ 
+la
+ 
+cadena
+ 
+de
+ 
+suministro
+ 
+de
+ 
+Ortiflex
+ 
+C.A.,
+ 
+facilitando
+ 
+la
+ 
+planificación,
+ 
+ejecución
+ 
+y
+ 
+monitoreo
+ 
+de
+ 
+las
+ 
+actividades
+ 
+relacionadas
+ 
+con
+ 
+el
+ 
+abastecimiento,
+ 
+producción,
+ 
+distribución
+ 
+y
+ 
+gestión
+ 
+de
+ 
+inventario.
+ 
+Este
+ 
+sistema
+ 
+permitirá
+ 
+mejorar
+ 
+la
+ 
+coordinación
+ 
+entre
+ 
+áreas,
+ 
+reducir
+ 
+errores
+ 
+operativos
+ 
+y
+ 
+optimizar
+ 
+el
+ 
+uso
+ 
+de
+ 
+los
+ 
+recursos
+ 
+disponibles.
+  Con  su  implementación,  se  espera  lograr  una  mayor  eficiencia  en  la  gestión  logística  
+de
+ 
+la
+ 
+empresa,
+ 
+mejorar
+ 
+la
+ 
+visibilidad
+ 
+de
+ 
+los
+ 
+procesos,
+ 
+apoyar
+ 
+la
+ 
+toma
+ 
+de
+ 
+decisiones
+ 
+estratégicas
+ 
+basadas
+ 
+en
+ 
+datos
+ 
+en
+ 
+tiempo
+ 
+real,
+ 
+y
+ 
+fomentar
+ 
+el
+ 
+crecimiento
+ 
+organizacional
+ 
+mediante
+ 
+el
+ 
+uso
+ 
+de
+ 
+tecnología
+ 
+adaptada
+ 
+a
+ 
+sus
+ 
+necesidades.
+    1.3  Justificación    Actualmente,  Ortiflex  C.A.  no  cuenta  con  una  herramienta  digital  que  
+centralice
+ 
+y
+ 
+automatice
+ 
+los
+ 
+procesos
+ 
+de
+ 
+su
+ 
+cadena
+ 
+de
+ 
+suministro.
+ 
+La
+ 
+gestión
+ 
+manual
+ 
+ha
+ 
+provocado
+ 
+errores
+ 
+frecuentes,
+ 
+pérdida
+ 
+de
+ 
+registros
+ 
+físicos,
+ 
+retrasos
+ 
+en
+ 
+la
+ 
+ejecución
+ 
+de
+ 
+proyectos
+ 
+y
+ 
+fallos
+ 
+logísticos
+ 
+que
+ 
+afectan
+ 
+la
+ 
+eficiencia
+ 
+operativa
+ 
+de
+ 
+la
+ 
+empresa.
+ 
+Esta
+ 
+situación
+ 
+limita
+ 
+la
+ 
+capacidad
+ 
+de
+ 
+respuesta
+ 
+ante
+ 
+la
+ 
+demanda,
+ 
+incrementa
+ 
+los
+ 
+costos
+ 
+y
+ 
+reduce
+ 
+la
+ 
+competitividad.
+    
+1.3  Alcance    La  aplicación  web  OSCM  abarcará  la  automatización  de  los  principales  
+procesos
+ 
+relacionados
+ 
+con
+ 
+la
+ 
+cadena
+ 
+de
+ 
+suministro
+ 
+de
+ 
+Ortiflex
+ 
+C.A.,
+ 
+incluyendo
+ 
+la
+ 
+planificación,
+ 
+ejecución
+ 
+y
+ 
+seguimiento
+ 
+de
+ 
+proyectos
+ 
+de
+ 
+producción;
+ 
+la
+ 
+gestión
+ 
+integral
+ 
+del
+ 
+inventario;
+ 
+el
+ 
+manejo
+ 
+de
+ 
+proveedores;
+ 
+la
+ 
+generación
+ 
+de
+ 
+reportes
+ 
+de
+ 
+eventos;
+ 
+y
+ 
+la
+ 
+administración
+ 
+de
+ 
+usuarios
+ 
+con
+ 
+distintos
+ 
+niveles
+ 
+de
+ 
+acceso
+ 
+según
+ 
+su
+ 
+rol.
+ 
+A
+ 
+través
+ 
+de
+ 
+una
+ 
+interfaz
+ 
+web
+ 
+adaptable,
+ 
+los
+ 
+usuarios
+ 
+podrán
+ 
+interactuar
+ 
+con
+ 
+el
+ 
+sistema
+ 
+para
+ 
+consultar
+ 
+materiales
+ 
+disponibles,
+ 
+registrar
+ 
+movimientos
+ 
+de
+ 
+inventario,
+ 
+controlar
+ 
+el
+ 
+estado
+ 
+de
+ 
+los
+ 
+proyectos
+ 
+y
+ 
+acceder
+ 
+a
+ 
+reportes
+ 
+organizados
+ 
+cronológicamente.
+ 
+Sin
+ 
+embargo,
+ 
+en
+ 
+esta
+ 
+fase
+ 
+del
+ 
+desarrollo
+ 
+no
+ 
+se
+ 
+contempla
+ 
+la
+ 
+integración
+ 
+con
+ 
+sistemas
+ 
+de
+ 
+facturación
+ 
+o
+ 
+contabilidad,
+ 
+pasarelas
+ 
+de
+ 
+pago,
+ 
+funcionalidades
+ 
+predictivas
+ 
+ni
+ 
+el
+ 
+desarrollo
+ 
+de
+ 
+una
+ 
+aplicación
+ 
+móvil
+ 
+nativa.
+  2  Objetivos  del  Proyecto   2.1  Objetivo  General   Diseñar  e  implementar  un  sistema  digital  que  permita  planificar,  ejecutar  y  
+monitorear
+ 
+la
+ 
+cadena
+ 
+de
+ 
+suministro
+ 
+de
+ 
+Ortiflex
+ 
+C.A.
+  2.2  objetivos  Específicos   
+●  Garantizar  la  entrega  puntual  de  los  productos  por  medio  de  la  planificación  
+digital
+ 
+de
+ 
+los
+ 
+proyectos
+ 
+a
+ 
+ejecutar
+ 
+y
+ 
+su
+ 
+monitoreo
+ 
+en
+ 
+tiempo
+ 
+real.
+ 
+ ●  Mejorar  la  coordinación  de  los  diferentes  proyectos  de  producción  dentro  del  
+sistema
+ 
+SCM.
+ 
+ ●  Optimizar  la  gestión  del  inventario  manteniendo  cantidades  de  material  
+adecuadas
+ 
+a
+ 
+la
+ 
+demanda.
+ 
+ ●  Mejorar  la  visibilidad  de  los  procesos  dentro  de  la  cadena  de  suministro  
+mediante
+ 
+herramientas
+ 
+que
+ 
+permitan
+ 
+monitorear
+ 
+y
+ 
+manejar
+ 
+el
+ 
+flujo
+ 
+de
+ 
+trabajo.
+ 
+ ●  Proporcionar  un  sistema  de  registro  cronológico  que  documente  los  eventos  
+clave
+ 
+dentro
+ 
+de
+ 
+la
+ 
+cadena
+ 
+de
+ 
+suministro.
+ 
+ 
+ 
+ 
+3.  Requisitos  Funcionales  
+En  este  apartado  se  presentan  los  requisitos  funcionales  que  deberán  ser  
+satisfechos
+ 
+por
+ 
+el
+ 
+sistema.
+ 
+Todos
+ 
+los
+ 
+requisitos
+ 
+aquí
+ 
+expuestos
+ 
+son
+ 
+ESENCIALES,
+ 
+es
+ 
+decir,
+ 
+no
+ 
+sería
+ 
+aceptable
+ 
+un
+ 
+sistema
+ 
+que
+ 
+no
+ 
+satisfaga
+ 
+alguno
+ 
+de
+ 
+los
+ 
+requisitos
+ 
+aquí
+ 
+presentados.
+   
+ID  Nombre  del  Requisito  Descripción  Prioridad  
+RF-001  Planificar  proyecto  Permitir  la  creación  de  nuevos  proyectos  de  producción,  definiendo  sus  tareas  y  recursos.  
+Alta  
+RF-002  Modificar  proyecto  Permitir  la  edición  de  los  detalles  de  un  proyecto  previamente  creado.  
+Media  
+RF-003  Ejecutar  proyecto  Cambiar  el  estado  del  proyecto  a  "en  ejecución"  y  registrar  el  progreso.  
+Alta  
+RF-004  Cancelar  proyecto  Permitir  eliminar  proyectos  que  ya  no  sean  necesarios.  
+Baja  
+RF-005  Monitorear  detalles  del  proyecto  Visualizar  en  tiempo  real  el  estado  y  avances  de  cada  proyecto.  
+Alta  
+RF-006  Agregar  material  Registrar  nuevos  materiales  en  el  inventario.  
+Alta  
+RF-007  Eliminar  material  Eliminar  materiales  obsoletos  o  en  desuso  del  inventario.  
+Media  
+RF-008  Actualizar  detalles  del  material  Editar  información  de  materiales  existentes  (nombre,  cantidad,  proveedor,  etc.).  
+Alta  
+RF-009  Consulta  de  inventario  Visualizar  el  inventario  actual  y  los  detalles  de  cada  material.  
+Alta  
+RF-010  Visualizar  reportes  Consultar  reportes  de  eventos  o  cambios  realizados  en  proyectos.  
+Media  
+RF-011  Exportar  reportes  en  PDF  Generar  reportes  en  formato  PDF  para  respaldos  o  presentación.  
+Media  
+RF-012  Crear  usuarios  soporte  Registrar  nuevos  usuarios  con  rol  de  soporte.  
+Alta  
+RF-013  Eliminar  usuarios  Eliminar  cuentas  de  usuario  que  ya  no  estén  activas.  
+Media  
+RF-014  Recuperar  claves  de  acceso  Permitir  la  recuperación  de  contraseñas  por  parte  de  los  usuarios.  
+Alta  
+RF-015  Login  de  usuario  Permitir  el  inicio  de  sesión  mediante  autenticación  segura.  
+Alta  
+RF-016  Registro  de  usuario  Permitir  la  creación  de  cuentas  de  usuario  con  rol  específico  
+Alta  
+ 
+4  Requisitos  no  Funcionales  
+ 
+ID  Descripción  Tipo  
+RnF-001  El  sistema  debe  requerir  autenticación  segura  mediante  usuario  y  contraseña  para  acceder.  
+Seguridad  
+RnF-002  La  aplicación  debe  restringir  funcionalidades  según  el  rol  del  usuario  (administrador,  soporte,  usuario).  
+Seguridad  
+RnF-003  La  aplicación  debe  estar  disponible  al  menos  el  95%  del  tiempo,  durante  horas  hábiles.  
+Fiabilidad  
+RnF-004  Las  acciones  del  sistema  no  deben  tardar  más  de  3  segundos  en  completarse.  
+Rendimiento  
+RnF-005  El  sistema  debe  permitir  respaldos  periódicos  de  la  base  de  datos  para  evitar  pérdida  de  información.  
+Fiabilidad  
+RnF-006  La  interfaz  debe  ser  intuitiva  y  de  fácil  navegación  para  usuarios  sin  experiencia  técnica.  
+Usabilidad  
+RnF-007  La  aplicación  debe  ser  compatible  con  los  navegadores  web  más  comunes  (Chrome,  Firefox,  Edge).  
+Compatibilidad  
+RnF-008  El  sistema  debe  permitir  la  incorporación  de  nuevos  módulos  o  funciones  en  el  futuro.  
+Mantenibilidad  
+RnF-009  El  código  y  la  estructura  del  sistema  deben  permitir  actualizaciones  sin  afectar  la  operación.  
+Mantenibilidad  
+ 
+5  Riesgos  y  su  Mitigación  
+ 
+Riesgo  Descripción  Mitigación  Prioridad  
+Resistencia  al  cambio  
+El  personal  podría  mostrar  resistencia  al  adoptar  el  nuevo  sistema  digital.  
+Capacitar  al  personal  y  demostrar  los  beneficios  
+Media  
+Pérdida  de  información  
+Riesgo  de  pérdida  de  datos  durante  la  migración  o  uso  del  sistema.  
+Implementar  respaldos  automáticos  y  políticas  de  recuperación  de  datos.  
+Alta  
+Falta  de  conectividad  
+Como  es  una  aplicación  web,  podría  verse  limitada  por  interrupciones  de  internet.  
+Incluir  modo  de  acceso  offline  limitado  o  mensajes  de  advertencia  ante  fallos  de  conexión.  
+Media  
+Problemas  técnicos  en  la  implementación  
+Errores  de  desarrollo  o  incompatibilidades  tecnológicas  pueden  retrasar  el  proyecto.  
+Adoptar  buenas  prácticas  de  desarrollo,  pruebas  continuas  y  uso  de  tecnologías  compatibles.  
+Alta  
+ 
+ 
+6  Casos  de  Uso  
+6.1  Diagrama  General  de  Casos  de  Uso  
+ 
+ 
+ 
+6.2  Escenarios  Detallados  Caso  de  uso:  Gestionar  Proyecto  
+CASO  DE  USO:  Gestionar  Proyecto  
+Versión  1.0  Fecha    
+Actor  Usuario  
+Descripción  Este  caso  de  uso  describe  cómo  el  usuario  interacciona  con  los  proyectos  creados  con  la  aplicación  
+Precondición  El  usuario  debe  haber  accedido  al  sistema  con  credenciales  válidas  
+Flujo  Principal  1-  El  usuario  accede  a  la  lista  con  todos  los  proyectos.  2-  El  usuario  accede  a  uno  de  los  proyectos  ya  creados  dandole  click  3-  El  usuario  selecciona  la  opción  de  “ejecutar  proyecto”  4-  La  aplicación  establece  el  estado  del  proyecto  seleccionado  a  “en  ejecución”  y  genera  un  archivo  pdf  con  los  detalles  del  proyecto  
+Subflujos  3.1-  El  usuario  modifica  los  campos  disponibles  dentro  de  la  interfaz  del  proyecto  seleccionado  
+
+Flujos  Alternativos  3-El  usuario  selecciona  la  opción  de  “cancelar  proyecto”  4-El  sistema  establece  el  estado  del  proyecto  seleccionado  a  “Cancelado”  
+Postcondición  
+ 
+Diagrama  
+ 
+ 
+ 
+ 
+CASO  DE  USO:  Gestionar  Inventario  
+Versión  1.0  Fecha    
+Actor  Usuario  
+Descripción  Este  caso  de  uso  describe  cómo  el  usuario  interacciona  con  el  inventario  y  los  materiales  registrados.  
+Precondición  El  usuario  debe  haber  accedido  al  sistema  con  credenciales  válidas  
+Flujo  Principal  1-  El  usuario  accede  a  la  sección  “gestionar  inventario”  2-  El  sistema  devuelve  una  tabla  con  todos  los  materiales  disponibles  3-  El  usuario  selecciona  una  de  las  opciones  disponibles  para  cada  campo  de  la  tabla  con  los  materiales  4-  El  sistema  genera  automáticamente  reportes  internos  de  las  modificaciones  realizadas  por  el  usuario  
+Subflujos  -  
+
+Flujos  Alternativos  -  
+Postcondición  
+ 
+Diagrama  
+ 
+ 
+ 
+ 
+
+--- END OF FILE: Requisitos de la Aplicación.pdf ---
+
+--- START OF FILE: sistema digital de control de inventarios para Ortiflex C.A..pdf ---
+ 
+ 
+MINISTERIO  DEL  PODER  POPULAR  PARA  LA  EDUCACIÓN  UNIVERSITARIA  
+ 
+UNIVERSIDAD
+ 
+NACIONAL
+ 
+EXPERIMENTAL
+ 
+DE
+ 
+LAS
+ 
+TELECOMUNICACIONES
+ 
+E
+ 
+INFORMÁTICA
+ 
+ 
+PROGRAMA
+ 
+NACIONAL
+ 
+DE
+ 
+FORMACIÓN
+ 
+EN
+ 
+INFORMÁTICA
+ 
+ 
+ 
+ 
+ 
+ 
+ Diseñar  e  implementar  un  sistema  digital  que  permita  
+planificar,
+ 
+ejecutar
+ 
+y
+ 
+monitorear
+ 
+la
+ 
+cadena
+ 
+de
+ 
+suministro
+ 
+de
+ 
+Ortiflex
+ 
+C.A.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Tutor  Académico:  Nombre  y  Apellido  del  integrante,  CI:  
+Ing.  Ana  Ejzenbaun  
+ Br.  Lexter  Freile  C.I:34065270   Br.  Carlos  Zamora  C.I:14704028   
+ 
+
+ 
+ 
+Índice
+ 
+Índice. ....................................................................................................................................... 2  Introducción .............................................................................................................................. 3  Fase  I:DIAGNÓSTICO  PARTICIPATIVO  DEL  PROYECTO  SOCIOTECNOLÓGICO.  1.  Descripción  de  la  Comunidad ........................................................................... 4  1.1.  Ubicación  y  datos  generales ..................................................................... 4  1.2.  Composición  del  equipo  humano .............................................................. 4  1.3.  Características  socioeconómicas .............................................................. 5  1.4.  Cultura  organizacional ............................................................................... 5  1.5.  Entorno  ambiental  y  territorial… ……………………………………..…..5  
+      2.  Identificación  de  Problemas  y  Necesidades
+ 
+2.1.  Metodología ............................................................................................... 5  2.2.  Problemas  detectados ............................................................................... 5  2.3.  Necesidades  expresadas .......................................................................... 6  
+      3.  Análisis  de  Recursos  y  Capacidades  
+3.1.  Recursos  materiales .................................................................................. 6  3.2.  Recursos  humanos .................................................................................... 6  3.3.  Recursos  organizativos ............................................................................. 6  3.4.  Potencialidades ......................................................................................... 6  
+      4.  Priorización  de  Actividades  
+Actividad  1:  Digitalización  de  planillas .............................................................. 7  Actividad  2:  Implementación  de  copias  de  seguridad ...................................... 7  Actividad  3:  Desarrollo  de  reportes  dinámicos ................................................. 7  
+      5.  Plan  de  Acción  
+Tabla  plan  de  acción ......................................................................................... 8  
+ 
+ 
+ 
+ 
+ 
+ 
+2  
+ 
+INTRODUCCIÓN  
+En  un  entorno  empresarial  cada  vez  más  competitivo  y  tecnológicamente  exigente,  
+la
+ 
+eficiencia
+ 
+operativa
+ 
+y
+ 
+la
+ 
+gestión
+ 
+precisa
+ 
+de
+ 
+los
+ 
+recursos
+ 
+son
+ 
+factores
+ 
+clave
+ 
+para
+ 
+la
+ 
+sostenibilidad
+ 
+de
+ 
+cualquier
+ 
+organización.
+ 
+Ortiflex
+ 
+C.A.,
+ 
+una
+ 
+empresa
+ 
+venezolana
+ 
+con
+ 
+más
+ 
+de
+ 
+tres
+ 
+décadas
+ 
+de
+ 
+trayectoria
+ 
+en
+ 
+la
+ 
+fabricación
+ 
+de
+ 
+etiquetas
+ 
+autoadhesivas,
+ 
+enfrenta
+ 
+desafíos
+ 
+significativos
+ 
+relacionados
+ 
+con
+ 
+la
+ 
+administración
+ 
+de
+ 
+su
+ 
+inventario.
+ 
+Actualmente,
+ 
+sus
+ 
+procesos
+ 
+de
+ 
+control
+ 
+de
+ 
+insumos
+ 
+se
+ 
+realizan
+ 
+de
+ 
+forma
+ 
+manual
+ 
+mediante
+ 
+planillas
+ 
+físicas,
+ 
+lo
+ 
+cual
+ 
+genera
+ 
+inconsistencias,
+ 
+pérdidas
+ 
+de
+ 
+información
+ 
+y
+ 
+retrasos
+ 
+en
+ 
+la
+ 
+toma
+ 
+de
+ 
+decisiones.
+ 
+La  presente  propuesta  tiene  como  objetivo  diseñar  e  implementar  un  sistema  digital  
+de
+ 
+control
+ 
+de
+ 
+inventarios
+ 
+que
+ 
+permita
+ 
+centralizar
+ 
+los
+ 
+datos,
+ 
+automatizar
+ 
+procesos
+ 
+clave
+ 
+y
+ 
+proporcionar
+ 
+información
+ 
+confiable
+ 
+en
+ 
+tiempo
+ 
+real.
+ 
+Este
+ 
+sistema
+ 
+no
+ 
+solo
+ 
+busca
+ 
+mejorar
+ 
+la
+ 
+trazabilidad
+ 
+de
+ 
+materiales,
+ 
+sino
+ 
+también
+ 
+optimizar
+ 
+la
+ 
+planificación
+ 
+productiva
+ 
+y
+ 
+reducir
+ 
+el
+ 
+margen
+ 
+de
+ 
+error
+ 
+humano.
+ 
+A  través  de  un  enfoque  participativo  y  un  diagnóstico  técnico  de  la  organización,  se  
+definieron
+ 
+las
+ 
+necesidades
+ 
+críticas
+ 
+y
+ 
+los
+ 
+recursos
+ 
+disponibles,
+ 
+lo
+ 
+que
+ 
+permitió
+ 
+establecer
+ 
+un
+ 
+plan
+ 
+de
+ 
+acción
+ 
+viable,
+ 
+alineado
+ 
+con
+ 
+las
+ 
+capacidades
+ 
+del
+ 
+equipo
+ 
+humano
+ 
+y
+ 
+la
+ 
+infraestructura
+ 
+tecnológica
+ 
+de
+ 
+Ortiflex.
+ 
+Con
+ 
+ello,
+ 
+se
+ 
+aspira
+ 
+a
+ 
+fortalecer
+ 
+la
+ 
+capacidad
+ 
+operativa
+ 
+de
+ 
+la
+ 
+empresa,
+ 
+elevar
+ 
+sus
+ 
+niveles
+ 
+de
+ 
+productividad
+ 
+y
+ 
+contribuir
+ 
+a
+ 
+su
+ 
+transformación
+ 
+digital
+ 
+de
+ 
+manera
+ 
+sostenible
+ 
+y
+ 
+escalable.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+3  
+ 
+1.  Descripción  de  la  Comunidad  
+1.1.  Ubicación  y  datos  generales
+ 
+ 
+ 
+Ortiflex
+ 
+C.A.
+ 
+es
+ 
+una
+ 
+empresa
+ 
+venezolana
+ 
+fundada
+ 
+en
+ 
+1994,
+ 
+especializada
+ 
+en
+ 
+la
+ 
+fabricación
+ 
+de
+ 
+etiquetas
+ 
+autoadhesivas.
+ 
+ 
+Está  ubicada  en  la  Avenida  Milán  de  Los  Ruices  Sur,  parroquia  Sucre,  municipio  
+Baruta,
+ 
+Caracas.
+ 
+Cuenta
+ 
+con
+ 
+tres
+ 
+núcleos
+ 
+operativos:
+ 
+diseño
+ 
+gráfico,
+ 
+administración
+ 
+y
+ 
+producción.
+ 
+ 
+ 
+1.2.  Composición  del  equipo  humano  
+ 
+La
+ 
+plantilla
+ 
+está
+ 
+compuesta
+ 
+por
+ 
+30
+ 
+colaboradores:
+ 
+●  10  diseñadores  gráficos  con  amplia  trayectoria  en  el  manejo  de  software  
+especializado.
+ 
+ ●  7  profesionales  administrativos  encargados  de  la  gestión  financiera  y  contable.  
+ ●  13  operarios  de  producción  responsables  de  impresoras,  guillotinas  hidráulicas,  
+plotters
+ 
+y
+ 
+máquinas
+ 
+flexográficas.
+ 
+ 
+ 
+ 
+4  
+
+ 
+1.3.  Características  socioeconómicas
+ 
+ 
+El
+ 
+personal
+ 
+posee
+ 
+niveles
+ 
+de
+ 
+formación
+ 
+técnica
+ 
+y
+ 
+media.
+ 
+25
+ 
+de
+ 
+las
+ 
+30
+ 
+estaciones
+ 
+de
+ 
+trabajo
+ 
+están
+ 
+operativas
+ 
+y
+ 
+actualizadas
+ 
+para
+ 
+ejecutar
+ 
+aplicaciones
+ 
+de
+ 
+gestión.
+ 
+Existe
+ 
+disposición
+ 
+al
+ 
+cambio
+ 
+y
+ 
+apertura
+ 
+a
+ 
+procesos
+ 
+de
+ 
+capacitación.
+ 
+1.4.  Cultura  organizacional
+ 
+ 
+Ortiflex
+ 
+C.A.
+ 
+mantiene
+ 
+un
+ 
+fuerte
+ 
+sentido
+ 
+de
+ 
+pertenencia
+ 
+y
+ 
+colaboración,
+ 
+reforzado
+ 
+en
+ 
+reuniones
+ 
+semanales
+ 
+de
+ 
+coordinación.
+ 
+Este
+ 
+capital
+ 
+social
+ 
+interno
+ 
+constituye
+ 
+una
+ 
+fortaleza
+ 
+para
+ 
+la
+ 
+implementación
+ 
+de
+ 
+soluciones
+ 
+tecnológicas
+ 
+participativas.
+ 
+1.5.  Entorno  ambiental  y  territorial  
+ 
+El
+ 
+área
+ 
+industrial
+ 
+enfrenta
+ 
+retos
+ 
+de
+ 
+gestión
+ 
+de
+ 
+residuos
+ 
+de
+ 
+tinta,
+ 
+materiales
+ 
+y
+ 
+disolventes,
+ 
+así
+ 
+como
+ 
+consumo
+ 
+eléctrico
+ 
+elevado.
+ 
+No
+ 
+existen
+ 
+protocolos
+ 
+automatizados
+ 
+para
+ 
+la
+ 
+gestión
+ 
+de
+ 
+desechos,
+ 
+lo
+ 
+cual
+ 
+representa
+ 
+una
+ 
+oportunidad
+ 
+de
+ 
+mejora
+ 
+paralela
+ 
+al
+ 
+proyecto
+ 
+de
+ 
+digitalización.
+ 
+ 
+ 
+El
+ 
+contexto
+ 
+operativo
+ 
+y
+ 
+cultural
+ 
+de
+ 
+Ortiflex
+ 
+C.A.
+ 
+demuestra
+ 
+la
+ 
+necesidad
+ 
+de
+ 
+modernizar
+ 
+procesos
+ 
+internos
+ 
+mediante
+ 
+un
+ 
+sistema
+ 
+digital
+ 
+que
+ 
+optimice
+ 
+la
+ 
+eficiencia
+ 
+y
+ 
+reduzca
+ 
+la
+ 
+carga
+ 
+manual
+ 
+de
+ 
+los
+ 
+colaboradores.
+ 
+ 
+2.  Identificación  de  Problemas  y  Necesidades  
+2.1.  Metodología
+ 
+ 
+Se
+ 
+aplicaron
+ 
+entrevistas
+ 
+semiestructuradas
+ 
+a
+ 
+tres
+ 
+jefes
+ 
+de
+ 
+área,
+ 
+entrevistas
+ 
+breves
+ 
+a
+ 
+cinco
+ 
+operarios
+ 
+y
+ 
+observación
+ 
+directa.
+ 
+2.2.  Problemas  detectados  
+1.  El  control  de  inventario  se  realiza  en  planillas  de  papel,  lo  que  provoca  duplicidad  de  
+registros
+ 
+y
+ 
+errores
+ 
+de
+ 
+digitación.
+ 
+Esto
+ 
+retrasa
+ 
+los
+ 
+tiempos
+ 
+de
+ 
+reposición
+ 
+y
+ 
+afecta
+ 
+la
+ 
+planificación
+ 
+de
+ 
+producción.
+ 
+ 2.  Extravío  de  las  planillas  de  control  de  inventario,  generando  inconsistencias  en  el  
+registro
+ 
+de
+ 
+salidas
+ 
+de
+ 
+stock.
+ 
+ 3.  La  trazabilidad  de  materiales  (tintas,  sustratos,  empaques)  es  deficiente,  lo  que  ha  
+ocasionado
+ 
+reprocesos
+ 
+y
+ 
+desperdicio
+ 
+de
+ 
+insumos.
+ 
+ 
+ 
+ 
+ 
+5  
+ 
+2.3.  Necesidades  expresadas  
+●  Disponer  de  un  sistema  web  centralizado,  accesible  desde  cualquier  estación  de  
+trabajo.
+ 
+ ●  Garantizar  copias  de  seguridad  automáticas  en  la  nube  para  prevenir  la  pérdida  de  
+información.
+ 
+ ●  Contar  con  reportes  dinámicos  que  indiquen  niveles  de  inventario  y  destino  de  cada  
+lote
+ 
+en
+ 
+tiempo
+ 
+real.
+ 
+ 
+Justificación
+ 
+ 
+Estos
+ 
+hallazgos
+ 
+justifican
+ 
+la
+ 
+implementación
+ 
+de
+ 
+un
+ 
+sistema
+ 
+digital
+ 
+de
+ 
+inventario
+ 
+que
+ 
+centralice
+ 
+datos,
+ 
+mejore
+ 
+la
+ 
+trazabilidad
+ 
+y
+ 
+reduzca
+ 
+errores
+ 
+administrativos.
+ 
+ 
+3.  Análisis  de  Recursos  y  Capacidades  
+3.1.  Recursos  materiales
+ 
+ 
+Ortiflex
+ 
+dispone
+ 
+de
+ 
+20
+ 
+computadoras,
+ 
+de
+ 
+las
+ 
+cuales
+ 
+15
+ 
+están
+ 
+operativas
+ 
+y
+ 
+actualizadas
+ 
+para
+ 
+ejecutar
+ 
+software
+ 
+de
+ 
+gestión
+ 
+y
+ 
+bases
+ 
+de
+ 
+datos
+ 
+locales.
+ 
+Cuenta
+ 
+con
+ 
+red
+ 
+LAN
+ 
+y
+ 
+espacio
+ 
+físico
+ 
+para
+ 
+un
+ 
+servidor.
+ 
+3.2.  Recursos  humanos
+ 
+ 
+El
+ 
+equipo
+ 
+muestra
+ 
+alto
+ 
+nivel
+ 
+de
+ 
+alfabetización
+ 
+digital:
+ 
+diseñadores
+ 
+manejan
+ 
+Adobe
+ 
+y
+ 
+Corel,
+ 
+administración
+ 
+utiliza
+ 
+hojas
+ 
+de
+ 
+cálculo,
+ 
+y
+ 
+producción
+ 
+tiene
+ 
+experiencia
+ 
+en
+ 
+sistemas
+ 
+de
+ 
+órdenes
+ 
+impresas.
+ 
+El
+ 
+personal
+ 
+ha
+ 
+manifestado
+ 
+disposición
+ 
+para
+ 
+recibir
+ 
+capacitación
+ 
+sobre
+ 
+nuevas
+ 
+herramientas.
+ 
+3.3.  Recursos  organizativos
+ 
+ 
+Existen
+ 
+instancias
+ 
+formales
+ 
+de
+ 
+decisión:
+ 
+equipos
+ 
+diferenciados
+ 
+de
+ 
+diseño,
+ 
+producción
+ 
+y
+ 
+administración,
+ 
+y
+ 
+un
+ 
+consejo
+ 
+interno
+ 
+que
+ 
+convoca
+ 
+asambleas
+ 
+mensuales.
+ 
+Este
+ 
+consejo
+ 
+puede
+ 
+facilitar
+ 
+la
+ 
+validación
+ 
+y
+ 
+seguimiento
+ 
+del
+ 
+sistema
+ 
+propuesto.
+ 
+3.4.  Potencialidades
+ 
+ 
+La
+ 
+trayectoria
+ 
+de
+ 
+tres
+ 
+décadas
+ 
+ha
+ 
+consolidado
+ 
+una
+ 
+estructura
+ 
+interna
+ 
+favorable
+ 
+a
+ 
+la
+ 
+adopción
+ 
+de
+ 
+tecnologías.
+ 
+Estos
+ 
+recursos
+ 
+indican
+ 
+que
+ 
+Ortiflex
+ 
+cuenta
+ 
+con
+ 
+condiciones
+ 
+técnicas,
+ 
+humanas
+ 
+y
+ 
+organizativas
+ 
+suficientes
+ 
+para
+ 
+implementar
+ 
+el
+ 
+sistema
+ 
+de
+ 
+control
+ 
+de
+ 
+inventarios.
+ 
+ 
+ 
+ 
+6  
+ 
+4.  Priorización  de  Actividades  
+Para  priorizar  se  definieron  los  criterios:  urgencia  (mitigar  riesgos  inmediatos),  
+impacto
+ 
+(mejora
+ 
+operativa
+ 
+y
+ 
+ahorro),
+ 
+viabilidad
+ 
+(recursos
+ 
+disponibles)
+ 
+y
+ 
+participación
+ 
+(aprobación
+ 
+del
+ 
+equipo).
+ 
+Actividad  1:  Digitalización  de  planillas  
+●  Descripción :  Diseño  de  la  base  de  datos  e  incorporación  de  registros  históricos.  
+ ●  Criterios :  urgencia,  viabilidad,  impacto.  
+ ●  Justificación :  elimina  duplicidades  y  errores  humanos.  
+ 
+Actividad  2:  Implementación  de  copias  de  seguridad  
+●  Descripción :  Configuración  de  respaldos  automáticos  en  la  nube.  
+ ●  Criterios :  urgencia,  impacto.  
+ ●  Justificación :  previene  pérdida  irreversible  de  datos.  
+ 
+Actividad  3:  Desarrollo  de  reportes  dinámicos  
+●  Descripción :  Paneles  en  tiempo  real  para  monitorear  existencias  y  destinos.  
+ ●  Criterios :  impacto,  participación.  
+ ●  Justificación :  mejora  la  trazabilidad  y  eficiencia  operativa.  
+ 
+Estas  actividades  fueron  definidas  en  conjunto  con  responsables  de  área,  
+considerando
+ 
+los
+ 
+hallazgos
+ 
+del
+ 
+diagnóstico
+ 
+participativo.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+7  
+ 
+5.  Plan  de  Acción  
+Este  plan  de  acción  se  deriva  de  las  actividades  priorizadas  y  está  diseñado  para  
+abordar
+ 
+directamente
+ 
+los
+ 
+problemas
+ 
+identificados.
+ 
+Actividad  Descripción  técnica  
+Responsable  
+Recursos  Inicio  Fin  
+Análisis  de  requerimientos  
+Validación  de  procesos  y  recolección  de  datos  de  campo  
+Carlos  Zamora,  Lexter  Freile  
+Entrevistas,  documentación  
+15/05/2025  22/05/2025  
+Diseño  de  base  de  datos  
+Modelado  entidad-relación  y  definición  de  tablas  
+Lexter  Freile  MySQL  Workbench  
+23/05/2025  30/05/2025  
+Desarrollo  de  módulos  CRUD  
+Programación  backend  y  frontend  
+Carlos  Zamora  
+VS  Code,  framework  web  
+01/06/2025  15/07/2025  
+Configuración  de  backups  
+Implementación  de  Google  Drive  API  
+Lexter  Freile,  Carlos  Zamora  
+Google  Drive  API  
+16/07/2025  25/07/2025  
+Pruebas  y  ajustes  finales  
+Ejecución  de  pruebas  funcionales  y  de  usuario  
+Lexter  Freile,  Carlos  Zamora  
+Usuarios  de  prueba  
+26/07/2025  10/08/2025  
+Capacitación  al  personal  
+Sesiones  de  inducción  y  manual  de  usuario  
+Lexter  Freile  Sala  de  formación  
+11/08/2025  15/08/2025  
+Despliegue  en  producción  
+Migración  al  servidor  local  y  verificación  de  red  
+Carlos  Zamora,  Lexter  Freile  
+Servidor  interno  
+16/08/2025  20/08/2025  
+ 
+ 
+ 
+8  
+--- END OF FILE: sistema digital de control de inventarios para Ortiflex C.A..pdf ---

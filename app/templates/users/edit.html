@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Editar Usuario: {{ user.username }}</h1>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre de Usuario</label>
+                        <input type="text" name="username" class="form-control" value="{{ user.username }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" value="{{ user.email }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Contraseña (dejar en blanco para no cambiar)</label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Rol del Sistema</label>
+                        <select name="role" id="roleSelect" class="form-select" required onchange="updatePermissions()">
+                            <option value="Operativo" {% if user.role=='Operativo' %}selected{% endif %}>Usuario
+                                (Operativo)</option>
+                            <option value="Soporte" {% if user.role=='Soporte' %}selected{% endif %}>Soporte
+                                (Informática)</option>
+                            <option value="Admin" {% if user.role=='Admin' %}selected{% endif %}>Administrador
+                                (Gerencia)</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label d-block fw-bold">Permisos Granulares</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="can_manage_inventory" id="can_inv" {%
+                                if user.can_manage_inventory %}checked{% endif %}>
+                            <label class="form-check-label" for="can_inv">Gestionar Inventario</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="can_manage_projects" id="can_proj" {%
+                                if user.can_manage_projects %}checked{% endif %}>
+                            <label class="form-check-label" for="can_proj">Gestionar Proyectos</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="can_view_reports" id="can_rep" {% if
+                                user.can_view_reports %}checked{% endif %}>
+                            <label class="form-check-label" for="can_rep">Ver Reportes</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="can_manage_users" id="can_users" {% if
+                                user.can_manage_users %}checked{% endif %}>
+                            <label class="form-check-label" for="can_users">Gestionar Usuarios</label>
+                        </div>
+                    </div>
+
+                    <script>
+                        function updatePermissions() {
+                            const role = document.getElementById('roleSelect').value;
+                            const inv = document.getElementById('can_inv');
+                            const proj = document.getElementById('can_proj');
+                            const rep = document.getElementById('can_rep');
+                            const users = document.getElementById('can_users');
+
+                            if (role === 'Admin') {
+                                inv.checked = proj.checked = rep.checked = users.checked = true;
+                            } else if (role === 'Soporte') {
+                                inv.checked = proj.checked = rep.checked = true;
+                                users.checked = false;
+                            } else { // Operativo
+                                inv.checked = proj.checked = true;
+                                rep.checked = users.checked = false;
+                            }
+                        }
+                    </script>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ url_for('users.list_users') }}" class="btn btn-secondary me-md-2">Cancelar</a>
+                        <button type="submit" class="btn btn-primary px-4">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

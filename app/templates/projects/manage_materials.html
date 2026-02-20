@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Materiales del Proyecto: {{ project.name }}</h1>
+    <a href="{{ url_for('projects.list_projects') }}" class="btn btn-sm btn-outline-secondary">Volver a Proyectos</a>
+</div>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white">Asignar Material</div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Seleccionar Material</label>
+                        <select name="material_id" class="form-select" required>
+                            {% for m in materials %}
+                            <option value="{{ m.id }}">{{ m.name }} (Disponible: {{ m.quantity }} {{ m.unit }})</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Cantidad Requerida</label>
+                        <input type="number" step="0.01" name="quantity" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Agregar al Proyecto</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <div class="card shadow-sm">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <span>Lista de Materiales Requeridos</span>
+                <button class="btn btn-sm btn-outline-info" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#deletedMaterials" aria-expanded="false" aria-controls="deletedMaterials">
+                    Ver Eliminados
+                </button>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Material</th>
+                            <th>Cantidad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% set active_materials = project.materials | rejectattr('is_deleted') | list %}
+                        {% if active_materials %}
+                        {% for pm in active_materials %}
+                        <tr
+                            class="{% if pm.material.quantity < pm.quantity_required %}table-danger text-danger{% endif %}">
+                            <td>
+                                {{ pm.material.name }}
+                                {% if pm.material.quantity < pm.quantity_required %} <i
+                                    class="bi bi-exclamation-triangle-fill ms-1" title="Stock Insuficiente"></i>
+                                    {% endif %}
+                            </td>
+                            <td>{{ pm.quantity_required }} {{ pm.material.unit }}</td>
+                            <td>
+                                <a href="{{ url_for('projects.remove_project_material', pm_id=pm.id) }}"
+                                    class="btn btn-sm btn-outline-danger" title="Eliminar">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="3" class="text-center py-3">No se han asignado materiales activos aún</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+
+                <div class="collapse" id="deletedMaterials">
+                    <div class="bg-light p-3 border-top">
+                        <h6 class="text-muted mb-2">Materiales Eliminados</h6>
+                        <table class="table table-sm table-hover mb-0">
+                            <tbody>
+                                {% for pm in project.materials if pm.is_deleted %}
+                                <tr>
+                                    <td class="text-muted"><del>{{ pm.material.name }}</del></td>
+                                    <td class="text-muted">{{ pm.quantity_required }} {{ pm.material.unit }}</td>
+                                    <td>
+                                        <a href="{{ url_for('projects.restore_project_material', pm_id=pm.id) }}"
+                                            class="btn btn-sm btn-link text-success p-0" title="Restaurar">
+                                            <i class="bi bi-arrow-counterclockwise"></i> Restaurar
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="3" class="text-center text-muted small">No hay materiales eliminados
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audio Alert Section -->
+        <audio id="warningSound" src="https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3"
+            preload="auto"></audio>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const flashMessages = document.querySelectorAll('.alert-warning');
+                if (flashMessages.length > 0) {
+                    const audio = document.getElementById('warningSound');
+                    if (audio) {
+                        audio.play().catch(e => console.log("Audio play failed:", e));
+                    }
+                }
+            });
+        </script>
+
+        <div class="mt-4">
+            <p class="text-muted small">Nota: El stock se descontará automáticamente cuando el proyecto pase al estado
+                "En ejecución".</p>
+            {% set has_stock_error = false %}
+            {% for pm in project.materials if not pm.is_deleted %}
+            {% if pm.material.quantity < pm.quantity_required %} {% set has_stock_error=true %} {% endif %} {% endfor %}
+                <a href="{{ url_for('projects.change_status', id=project.id, status='En ejecución') }}"
+                class="btn btn-success px-4 {% if not active_materials or has_stock_error %}disabled{% endif %}" {% if
+                has_stock_error %}title="Corrija el stock insuficiente antes de iniciar" {% endif %}>
+                Iniciar Proyecto
+                </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

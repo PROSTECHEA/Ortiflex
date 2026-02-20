@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Centro de Reportes y Auditoría</h1>
+</div>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <form method="GET" action="{{ url_for('reports.search') }}" class="row g-3">
+            <div class="col-md-5">
+                <label class="form-label">Buscar Proyecto</label>
+                <div class="position-relative">
+                    <input type="text" name="q" id="projectSearch" class="form-control"
+                        placeholder="Nombre del proyecto..." value="{{ query }}" autocomplete="off">
+                    <div id="autocomplete-results" class="list-group position-absolute w-100 shadow-sm d-none"
+                        style="z-index: 1000; top: 100%;"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Estado</label>
+                <select name="status" class="form-select">
+                    <option value="">Todos los estados</option>
+                    <option value="Planificado" {% if status=='Planificado' %}selected{% endif %}>Planificado</option>
+                    <option value="En ejecución" {% if status=='En ejecución' %}selected{% endif %}>En ejecución
+                    </option>
+                    <option value="Finalizado" {% if status=='Finalizado' %}selected{% endif %}>Finalizado</option>
+                    <option value="Cancelado" {% if status=='Cancelado' %}selected{% endif %}>Cancelado</option>
+                </select>
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary w-100">
+                    <i class="bi bi-search me-2"></i> Filtrar Proyectos
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Proyecto</th>
+                        <th>Estado</th>
+                        <th>Creado</th>
+                        <th>Inicio</th>
+                        <th>Fin</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in projects %}
+                    <tr style="cursor: pointer;"
+                        onclick="window.location='{{ url_for('reports.project_audit', id=p.id) }}'">
+                        <td class="fw-bold">{{ p.name }}</td>
+                        <td>
+                            <span
+                                class="badge {% if p.status == 'Planificado' %}bg-secondary{% elif p.status == 'En ejecución' %}bg-primary{% elif p.status == 'Finalizado' %}bg-success{% else %}bg-danger{% endif %}">
+                                {{ p.status }}
+                            </span>
+                        </td>
+                        <td class="small">{{ p.date_created.strftime('%d/%m/%Y %H:%M') }}</td>
+                        <td class="small">{{ p.date_started.strftime('%d/%m/%Y %H:%M') if p.date_started else '-' }}
+                        </td>
+                        <td class="small">{{ p.date_ended.strftime('%d/%m/%Y %H:%M') if p.date_ended else '-' }}</td>
+                        <td>
+                            <a href="{{ url_for('reports.project_audit', id=p.id) }}"
+                                class="btn btn-sm btn-outline-info" title="Ver Auditoría">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center py-4 text-muted">No se encontraron proyectos</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Pagination -->
+<nav class="mt-4">
+    <ul class="pagination justify-content-center">
+        {% for page_num in pagination.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if page_num %}
+        {% if pagination.page == page_num %}
+        <li class="page-item active"><span class="page-link">{{ page_num }}</span></li>
+        {% else %}
+        <li class="page-item"><a class="page-link"
+                href="{{ url_for('reports.search', page=page_num, q=query, status=status) }}">{{ page_num }}</a></li>
+        {% endif %}
+        {% else %}
+        <li class="page-item disabled"><span class="page-link">...</span></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</nav>
+
+<script>
+    const searchInput = document.getElementById('projectSearch');
+    const resultsDiv = document.getElementById('autocomplete-results');
+
+    searchInput.addEventListener('input', async function () {
+        const query = this.value;
+        if (query.length < 2) {
+            resultsDiv.classList.add('d-none');
+            return;
+        }
+
+        const response = await fetch(`/reports/autocomplete?q=${query}`);
+        const data = await response.json();
+
+        if (data.length > 0) {
+            resultsDiv.innerHTML = data.map(item => `
+                <button type="button" class="list-group-item list-group-item-action">${item}</button>
+            `).join('');
+            resultsDiv.classList.remove('d-none');
+        } else {
+            resultsDiv.classList.add('d-none');
+        }
+    });
+
+    resultsDiv.addEventListener('click', function (e) {
+        if (e.target.tagName === 'BUTTON') {
+            searchInput.value = e.target.innerText;
+            resultsDiv.classList.add('d-none');
+            searchInput.form.submit();
+        }
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!searchInput.contains(e.target) && !resultsDiv.contains(e.target)) {
+            resultsDiv.classList.add('d-none');
+        }
+    });
+</script>
+{% endblock %}

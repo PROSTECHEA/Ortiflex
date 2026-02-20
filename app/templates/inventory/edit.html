@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Editar Material: {{ material.name }}</h1>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre del Material</label>
+                        <input type="text" name="name" class="form-control" value="{{ material.name }}" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Cantidad Actual</label>
+                            <input type="number" step="0.01" name="quantity" class="form-control"
+                                value="{{ material.quantity }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Unidad de Medida</label>
+                            <select name="unit" class="form-select" required>
+                                <option value="Unidades" {% if material.unit=='Unidades' %}selected{% endif %}>Unidades
+                                </option>
+                                <option value="Litros" {% if material.unit=='Litros' %}selected{% endif %}>Litros
+                                </option>
+                                <option value="Kg" {% if material.unit=='Kg' %}selected{% endif %}>Kg</option>
+                                <option value="Metros" {% if material.unit=='Metros' %}selected{% endif %}>Metros
+                                </option>
+                                <option value="Rollos" {% if material.unit=='Rollos' %}selected{% endif %}>Rollos
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Stock Mínimo (Alerta)</label>
+                        <input type="number" step="0.01" name="min_stock" class="form-control"
+                            value="{{ material.min_stock }}" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Proveedor</label>
+                        <input type="text" name="supplier" class="form-control" value="{{ material.supplier }}">
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ url_for('inventory.list_materials') }}"
+                            class="btn btn-secondary me-md-2">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Actualizar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
