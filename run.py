@@ -1,6 +1,7 @@
 from app import create_app, db
 from app.models import User
 import bcrypt
+import os
 
 app = create_app()
 
@@ -15,4 +16,6 @@ def create_admin():
 
 if __name__ == '__main__':
     create_admin()
-    app.run(debug=True)
+    # Para despliegue en la nube
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
